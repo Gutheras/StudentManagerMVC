@@ -21,12 +21,9 @@ namespace ContosoUniversity2.Controllers
         //    return View();
         //}
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var students = await _context.Students.ToListAsync(); // Make sure to fetch the students
-
-            return View(students); // Pass students list to the view
-
+            return View();
         }
 
         public async Task<IActionResult> Courses()
@@ -39,9 +36,11 @@ namespace ContosoUniversity2.Controllers
             return View();
         }
 
-        public IActionResult Students()
+        public async Task<IActionResult> StudentsAsync()
         {
-            return View();
+            var students = await _context.Students.ToListAsync(); // Make sure to fetch the students
+
+            return View(students);
         }
 
         public IActionResult Instructors()
