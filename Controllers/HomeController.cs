@@ -29,17 +29,17 @@ namespace ContosoUniversity2.Controllers
 
         }
 
+        public async Task<IActionResult> Courses()
+        {
+            return View(await _context.Courses.ToListAsync());
+        }
+
         public IActionResult Privacy()
         {
             return View();
         }
 
         public IActionResult Students()
-        {
-            return View();
-        }
-
-        public IActionResult Courses()
         {
             return View();
         }
