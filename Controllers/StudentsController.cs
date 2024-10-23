@@ -59,7 +59,7 @@ namespace ContosoUniversity2.Controllers
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Students", "Home");
             }
             return View(student);
         }
@@ -91,7 +91,7 @@ namespace ContosoUniversity2.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (student != null)
             {
                 try
                 {
@@ -109,7 +109,7 @@ namespace ContosoUniversity2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Students", "Home");
             }
             return View(student);
         }
@@ -144,7 +144,7 @@ namespace ContosoUniversity2.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Students", "Home");
         }
 
         private bool StudentExists(int id)

@@ -93,7 +93,7 @@ namespace ContosoUniversity2.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (course != null)
             {
                 try
                 {
@@ -111,7 +111,7 @@ namespace ContosoUniversity2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Courses", "Home");
             }
             return View(course);
         }
@@ -146,7 +146,7 @@ namespace ContosoUniversity2.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Courses", "Home");
         }
 
         private bool CourseExists(int id)
